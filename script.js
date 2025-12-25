@@ -35,6 +35,28 @@ window.addEventListener('scroll', () => {
     hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
 });
 
+// Block scrolling immediately
+document.body.classList.add("loading");
 
+window.addEventListener("load", () => {
+    const loader = document.querySelector(".loader");
+
+    // Delay before hiding loader (in ms)
+    const DELAY = 300; // 0.5 seconds
+
+    setTimeout(() => {
+        loader.classList.add("loader-hidden");
+
+        // Enable scrolling + remove blur
+        document.body.classList.remove("loading");
+        document.body.classList.add("loaded");
+
+        loader.addEventListener(
+            "transitionend",
+            () => loader.remove(),
+            { once: true }
+        );
+    }, DELAY);
+});
 
 progressBars.forEach(bar => observer.observe(bar));

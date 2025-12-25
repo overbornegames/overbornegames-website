@@ -27,6 +27,23 @@ body {
     overflow-x: hidden;
 }
 
+section#video-bg {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+section#video-bg video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* Blur and transparency effects */
 .blur-bg {
     background: var(--card-bg);
@@ -53,6 +70,12 @@ nav {
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
     transition: all 0.3s ease;
+}
+
+ul {
+    margin: 10px 0;
+    padding-left: 20px;
+    color: var(--text-secondary);
 }
 
 .logo {
@@ -254,7 +277,7 @@ nav {
 
 /* Section styling */
 section {
-    padding: 120px 10%;
+    padding: 50px 10%;
 }
 
 .section-header {
@@ -314,7 +337,7 @@ section {
 
 .features {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 25px;
     margin-top: 30px;
 }
@@ -513,16 +536,16 @@ section {
 }
 
 .screenshot {
-    border-radius: 16px;
+    border-radius: 8px;
     overflow: hidden;
     height: 400px;
-    position: relative;
+    width: 300px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s ease;
+    transition: transform 0.5s ease;
 }
 
 .screenshot:hover {
-    transform: translateY(-10px);
+    transform: translateY(-8px);
 }
 
 .screenshot img {
@@ -609,8 +632,8 @@ section {
 }
 
 .member-photo {
-    width: 180px;
-    height: 180px;
+    width: 128px;
+    height: 128px;
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto 25px;
