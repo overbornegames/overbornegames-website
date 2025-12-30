@@ -20,10 +20,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
     if(window.scrollY > 50) {
-        nav.style.padding = '15px 5%';
+        nav.style.padding = '6px 0.5%';
         nav.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
     } else {
-        nav.style.padding = '20px 5%';
+        nav.style.padding = '16px 1%';
         nav.style.boxShadow = 'none';
     }
 });
@@ -42,7 +42,7 @@ window.addEventListener("load", () => {
     const loader = document.querySelector(".loader");
 
     // Delay before hiding loader (in ms)
-    const DELAY = 300; // 0.5 seconds
+    const DELAY = 1000; // 1 second
 
     setTimeout(() => {
         loader.classList.add("loader-hidden");
