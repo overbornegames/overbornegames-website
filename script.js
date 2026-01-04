@@ -16,26 +16,49 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Navbar effect on scroll
-window.addEventListener('scroll', () => {
-    const nav = document.querySelector('nav');
-    if(window.scrollY > 50) {
-        nav.style.padding = '6px 0.5%';
-        nav.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.3)';
-    } else {
-        nav.style.padding = '16px 1%';
-        nav.style.boxShadow = 'none';
-    }
-});
-
 // Parallax effect for hero section
 window.addEventListener('scroll', () => {
     const scrollPosition = window.scrollY;
     const hero = document.querySelector('.hero');
-    hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+    if (hero) {
+        hero.style.backgroundPosition = `center ${scrollPosition * 0.5}px`;
+    }
 });
 
-// Block scrolling immediately
+// Navbar effect on scroll
+window.addEventListener('scroll', () =>
+{
+    const nav = document.querySelector('nav');
+
+    if (window.scrollY > 250)
+    {
+        nav.style.backdropFilter    = 'blur(8px)';
+
+        nav.style.backgroundColor   = 'rgb(0, 0, 0)';
+
+        nav.style.boxShadow         = '0 5px 20px rgba(0, 0, 0, 0.25)';
+
+        nav.style.paddingBottom     = '8px';
+        nav.style.paddingLeft       = '16px';
+        nav.style.paddingRight      = '16px';
+        nav.style.paddingTop        = '8px';
+    }
+    else
+    {
+        nav.style.backdropFilter    = 'blur(0px)';
+
+        nav.style.backgroundColor   = 'rgb(0, 0, 0, 0)';
+
+        nav.style.boxShadow         = 'none';
+
+        nav.style.paddingBottom     = '32px';
+        nav.style.paddingLeft       = '40px';
+        nav.style.paddingRight      = '40px';
+        nav.style.paddingTop        = '32px';
+    }
+});
+
+// Loader functionality
 document.body.classList.add("loading");
 
 window.addEventListener("load", () => {
@@ -59,4 +82,79 @@ window.addEventListener("load", () => {
     }, DELAY);
 });
 
-progressBars.forEach(bar => observer.observe(bar));
+// Hamburger Menu Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+    
+    // Check if elements exist
+    if (!hamburger || !navLinks) {
+        console.log('Hamburger elements not found');
+        return;
+    }
+    
+    console.log('Hamburger menu initialized');
+    
+    // Toggle menu function
+    hamburger.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Toggle active class on nav links
+        navLinks.classList.toggle('active');
+        
+        // Change hamburger icon
+        const icon = hamburger.querySelector('i');
+        if (navLinks.classList.contains('active')) {
+            icon.classList.remove('fa-bars');
+            icon.classList.add('fa-times');
+        } else {
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+            // Restore scrolling
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close menu when clicking on a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('active');
+            const icon = hamburger.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+            // Restore scrolling
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+        });
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+        if (navLinks.classList.contains('active') && 
+            !navLinks.contains(e.target) && 
+            !hamburger.contains(e.target)) {
+            navLinks.classList.remove('active');
+            const icon = hamburger.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+            // Restore scrolling
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+        }
+    });
+    
+    // Close menu on escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+            navLinks.classList.remove('active');
+            const icon = hamburger.querySelector('i');
+            icon.classList.remove('fa-times');
+            icon.classList.add('fa-bars');
+            // Restore scrolling
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+        }
+    });
+});
