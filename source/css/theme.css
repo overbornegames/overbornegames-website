@@ -308,7 +308,6 @@ section {
 .section-secondary
 {
     background-color: var(--body-secondary);
-    padding-bottom: 15%;
 }
 
 /* About section */
@@ -336,13 +335,17 @@ section {
 .features {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+    align-items: start;
     gap: 25px;
-    margin-top: 30px;
 }
 
 .feature {
+    background-color: var(--body-secondary);
+    border-radius: 12px;
+    border: solid var(--border);
     display: flex;
     gap: 15px;
+    padding: 12px;
 }
 
 .feature i {
@@ -417,7 +420,7 @@ section {
 
 .member {
     text-align: center;
-    border: 2px solid var(--accent);
+    border: 2px solid var(--border);
     border-radius: 16px;
     padding: 32px;
     background-color: var(--body-secondary);
