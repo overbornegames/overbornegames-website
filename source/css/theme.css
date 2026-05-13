@@ -994,4 +994,15 @@ footer
     {
         padding: 2rem;
     }
+
+    .nav-links
+    {
+        gap: 24px;
+        padding: 2px 2px;
+    }
+
+    .nav-links a
+    {
+        padding: 2px 2px;
+    }
 }
