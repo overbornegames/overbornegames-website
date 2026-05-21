@@ -1167,3 +1167,8 @@ footer
         padding: 2px 2px;
     }
 }
+
+@media (max-width: 480px)
+{
+    .nav-links { display: none; }
+}
