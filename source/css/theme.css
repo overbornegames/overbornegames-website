@@ -34,7 +34,8 @@ a {color: inherit; text-decoration: none;}
     --border: rgba(242,239,232,0.08);
 }
 
-/* Fonts */
+/* Rajdhani */
+
 @font-face
 {
     font-family: "Rajdhani-Bold";
@@ -65,6 +66,8 @@ a {color: inherit; text-decoration: none;}
     src: url(../fonts/Rajdhani/Rajdhani-SemiBold.ttf);
 }
 
+/* SpaceMono */
+
 @font-face
 {
     font-family: "SpaceMono-Bold";
@@ -89,10 +92,20 @@ a {color: inherit; text-decoration: none;}
     src: url(../fonts/Space_Mono/SpaceMono-Regular.ttf);
 }
 
+/* BebasNeus */
+
 @font-face
 {
     font-family: "BebasNeus-Regular";
     src: url(../fonts/Bebas_Neue/BebasNeue-Regular.ttf);
+}
+
+/* Chakra Petch */
+
+@font-face
+{
+    font-family: "ChakraPetch-Bold";
+    src: url(../fonts/Chakra_Petch/ChakraPetch-Bold.ttf);
 }
 
 body
@@ -104,26 +117,6 @@ body
     line-height: 1.6;
     overflow-x: hidden;
     cursor: crosshair;
-}
-
-/* ── NAV ── */
-nav
-{
-    font-family: "Rajdhani-Bold";
-    font-size: 16px;
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    left: 0; right: 0;
-    z-index: 3;
-    background: rgba(9,9,9,0.85);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;     
-    user-select: none;
 }
 
 section #video-bg
@@ -188,51 +181,120 @@ section #video-bg video
     background: var(--overlay-fade);
 }
 
+/* ── NAV ── */
+nav
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+
+    background: rgba(9, 9, 9, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    border-bottom: 2px solid var(--border);
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.nav-container
+{
+    width: 100%;
+    height: 64px;
+
+    margin: 0 auto;
+    padding: 20px 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ── LOGO ── */
+.nav-logo
+{
+    font-family: "ChakraPetch-Bold";
+    font-size: 20px;
+    letter-spacing: 2px;
+
+    color: #fff;
+    text-decoration: none;
+
+    white-space: nowrap;
+}
+
+/* ── LINKS ── */
 .nav-links
 {
     display: flex;
-    gap: 32px;
+    align-items: center;
+
+    margin: 0;
+    padding: 0;
+
     list-style: none;
-    font-size: 14px;
-    letter-spacing: 2.5px;
-    text-transform: uppercase;
-    padding: 8px;
+}
+
+.nav-links li
+{
+    width: 96px;
 }
 
 .nav-links a
 {
-    color: var(--muted);
-    transition: color 0.25s;
     position: relative;
-    padding: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+
+    font-family: "ChakraPetch-Bold";
+    font-size: 16px;
+
+    color: #fff;
+    text-decoration: none;
+
+    transition: color 0.25s ease;
 }
 
-.nav-links a:hover, .nav-links a.active
+.nav-links a span
 {
-    color: var(--text);
+    position: relative;
 }
 
-.nav-links a::after
+.nav-links a span::after
 {
-    content: '';
+    content: "";
+
     position: absolute;
-    bottom: 0;
     left: 0;
-    width: 0;
-    height: 1px;
+    right: 0;
+    bottom: -6px;
+
+    height: 2px;
+
     background: var(--accent);
-    transition: width 0.25s ease;
+
+    transform: scaleX(0);
+    transition: transform 0.25s ease;
 }
 
-.nav-links a:hover { color: var(--white); }
-
-.nav-links a:hover::after, .nav-links a.active::after
+.nav-links a:hover
 {
-    width: 100%;
+    color: var(--accent);
 }
 
-.nav-links a:hover { color: var(--white); }
-.nav-links a:hover::after { transform: scaleX(1); }
+.nav-links a:hover span::after
+{
+    transform: scaleX(1);
+}
 
 /* ── HERO ── */
 #home
@@ -288,7 +350,7 @@ section #video-bg video
 .hero-content
 {
     position: relative;
-    z-index: 2;
+    z-index: 1;
     max-width: 900px;
 }
 
